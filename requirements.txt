@@ -1,0 +1,5 @@
+google-generativeai
+openai
+playwright
+python-dotenv
+requests
