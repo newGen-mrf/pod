@@ -5,6 +5,7 @@ Full API v5 integration to post mockups for organic traffic.
 
 import json
 import logging
+import os
 import requests
 
 import config
