@@ -2,14 +2,20 @@ name: Autonomous POD Worker
 
 on:
   schedule:
-    - cron: '0 8,14,20 * * *'
-  workflow_dispatch: # Allow manual triggers
+    - cron: '0 8,14,20 * * *' # Run 3 times a day
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run in dry-run mode (no uploads)'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   run-worker:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Needed for committing outputs
+      contents: write # Needed for committing state
 
     steps:
       - name: Checkout Repository
@@ -19,21 +25,38 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install System Dependencies for rembg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-glx
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          playwright install chromium
+          playwright install chromium --with-deps
 
       - name: Run POD Worker
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: python worker.py
+          PRINTIFY_API_TOKEN: ${{ secrets.PRINTIFY_API_TOKEN }}
+          PRINTIFY_SHOP_ID: ${{ secrets.PRINTIFY_SHOP_ID }}
+          REDBUBBLE_EMAIL: ${{ secrets.REDBUBBLE_EMAIL }}
+          REDBUBBLE_PASSWORD: ${{ secrets.REDBUBBLE_PASSWORD }}
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+          PINTEREST_BOARD_ID: ${{ secrets.PINTEREST_BOARD_ID }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            python worker.py --dry-run
+          else
+            python worker.py
+          fi
 
-      - name: Commit and Push Changes
+      - name: Commit and Push State
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Automated POD Update: New Design & Caption [skip ci]"
-          file_pattern: 'outputs/* state.json'
+          commit_message: "Automated POD Update: State & Logs [skip ci]"
+          file_pattern: 'state.json logs/* outputs/rb_session.json outputs/*.png'
