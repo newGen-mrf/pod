@@ -32,9 +32,9 @@ ENABLE_PINTEREST = bool(PINTEREST_ACCESS_TOKEN and PINTEREST_BOARD_ID)
 # ──────────────────────────────────────────────
 # File Paths
 # ──────────────────────────────────────────────
-STATE_FILE = "state.json"
-OUTPUT_DIR = "outputs"
-MOCKUP_DIR = "outputs/mockups"
+STATE_FILE = "storefront/public/state.json"
+OUTPUT_DIR = "storefront/public/designs"
+MOCKUP_DIR = "storefront/public/mockups"
 LOG_DIR = "logs"
 
 # ──────────────────────────────────────────────

@@ -26,6 +26,7 @@ interface Product {
   images: ProductImage[];
   variants: ProductVariant[];
   created_at?: string;
+  url?: string;
 }
 
 /* ──────────────────────────────────────────────
@@ -425,10 +426,16 @@ export default function Home() {
                             <span className="product-card-price-label">Starting from</span>
                           </div>
                           <a
-                            href={SHOP_URL}
+                            href={product.url && product.url !== '#' ? product.url : SHOP_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-primary btn-sm"
+                            onClick={(e) => {
+                                if (product.url === '#') {
+                                    e.preventDefault();
+                                    alert("Redbubble listing is still being processed. Check back soon!");
+                                }
+                            }}
                           >
                             Buy {Icons.external}
                           </a>
@@ -668,11 +675,17 @@ export default function Home() {
 
               <div style={{ display: 'flex', gap: '0.75rem', marginTop: 'auto' }}>
                 <a
-                  href={SHOP_URL}
+                  href={selectedProduct.url && selectedProduct.url !== '#' ? selectedProduct.url : SHOP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary btn-lg"
                   style={{ flex: 1 }}
+                  onClick={(e) => {
+                      if (selectedProduct.url === '#') {
+                          e.preventDefault();
+                          alert("Redbubble listing is still being processed. Check back soon!");
+                      }
+                  }}
                 >
                   Buy Now {Icons.external}
                 </a>
