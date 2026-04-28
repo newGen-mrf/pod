@@ -3,21 +3,22 @@
 ## Current Status (2026-04-28)
 - **Storefront Tech Stack:** Next.js 16, React 19, Vanilla CSS (Premium Dark Theme).
 - **GitHub Repository:** `https://github.com/newGen-mrf/pod`
-- **Deployment Platform:** Vercel (`https://pod-beryl.vercel.app/`)
+- **Deployment Platform:** Vercel (`https://pod-beryl.vercel.app/`) — **LIVE and WORKING**.
+- **Automation:** GitHub Actions bot is now fixed (no more .gitignore conflicts).
 
 ## Completed Tasks
 1. **Design System:** Created `globals.css` with glassmorphism, gradient meshes, and custom animations.
 2. **Main Page:** Developed `page.tsx` featuring a hero section, scrolling marquee, category-filtered product grid, and quick-view modals.
 3. **API Integration:** Implemented `/api/products` route fetching data directly from Printify API.
 4. **Environment Configuration:** Identified `PRINTIFY_SHOP_ID` as `27343804`.
-5. **Vercel Setup:** Pushed code to GitHub; set up Vercel project with root directory pointing to `storefront`.
+5. **Vercel Setup:** Successfully deployed by setting Root Directory to `storefront` and Framework Preset to `Next.js`.
 6. **Bug Fixes:**
    - Fixed missing `os` import in `uploaders/pinterest.py`.
-   - Removed Tailwind PostCSS plugin from `postcss.config.mjs` to fix potential build conflicts with vanilla CSS.
+   - Removed Tailwind PostCSS plugin from `postcss.config.mjs` to fix potential build conflicts.
+   - **Critical:** Removed `logs/` and `outputs/` from `.gitignore` to prevent GitHub Actions automation from crashing when saving state.
 
 ## Ongoing Issues
-- **Vercel 404:** The live site at `https://pod-beryl.vercel.app/` currently returns 404. 
-- **Next Steps:** Verify the latest deployment build output in Vercel. Ensure a "Redeploy" was triggered after setting the Root Directory to `storefront`.
+- None! The storefront and bot pipeline are now fully functional.
 
 ## Key Credentials Needed for Vercel:
 - `PRINTIFY_API_TOKEN`: (User's private token)

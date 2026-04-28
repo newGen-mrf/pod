@@ -64,17 +64,22 @@ def _generate_image_prompt(trend: str, style: str, category_name: str) -> str:
         trend=trend, style=style, category=category_name
     )
 
-    # Try Gemini first, fallback to OpenAI
+    # Try Gemini first, fallback to OpenAI keys
     for attempt in range(config.MAX_RETRIES):
+        # 1. Try Gemini
         try:
             return _prompt_with_gemini(system_prompt)
         except Exception as e:
             logger.warning(f"Gemini text gen failed (attempt {attempt + 1}): {e}")
 
-        try:
-            return _prompt_with_openai(system_prompt)
-        except Exception as e:
-            logger.warning(f"OpenAI text gen failed (attempt {attempt + 1}): {e}")
+        # 2. Try all available OpenAI keys
+        for key_name, key in [("Primary", config.OPENAI_API_KEY), ("Secondary", config.OPENAI_API_KEY_2)]:
+            if not key:
+                continue
+            try:
+                return _prompt_with_openai(system_prompt, key)
+            except Exception as e:
+                logger.warning(f"OpenAI {key_name} text gen failed (attempt {attempt + 1}): {e}")
 
         if attempt < config.MAX_RETRIES - 1:
             time.sleep(config.RETRY_DELAY * (attempt + 1))
@@ -94,11 +99,11 @@ def _prompt_with_gemini(prompt: str) -> str:
     return response.text.strip()
 
 
-def _prompt_with_openai(prompt: str) -> str:
-    """Generate text prompt using OpenAI."""
+def _prompt_with_openai(prompt: str, api_key: str) -> str:
+    """Generate text prompt using OpenAI with specific key."""
     from openai import OpenAI
 
-    client = OpenAI(api_key=config.OPENAI_API_KEY)
+    client = OpenAI(api_key=api_key)
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[{"role": "user", "content": prompt}],
@@ -121,13 +126,15 @@ def _generate_image(prompt: str) -> bytes:
             errors.append(f"Gemini Imagen: {e}")
             logger.warning(f"Gemini image gen failed: {e}")
 
-    # Attempt 2: OpenAI DALL-E 3
-    if config.OPENAI_API_KEY:
+    # Attempt 2: OpenAI DALL-E 3 (Try all keys)
+    for key_name, key in [("Primary", config.OPENAI_API_KEY), ("Secondary", config.OPENAI_API_KEY_2)]:
+        if not key:
+            continue
         try:
-            return _image_with_openai(prompt)
+            return _image_with_openai(prompt, key)
         except Exception as e:
-            errors.append(f"DALL-E 3: {e}")
-            logger.warning(f"OpenAI image gen failed: {e}")
+            errors.append(f"DALL-E 3 {key_name}: {e}")
+            logger.warning(f"OpenAI {key_name} image gen failed: {e}")
 
     raise RuntimeError(f"All image generators failed: {'; '.join(errors)}")
 
@@ -160,11 +167,11 @@ def _image_with_gemini(prompt: str) -> bytes:
     raise RuntimeError("Gemini returned no images")
 
 
-def _image_with_openai(prompt: str) -> bytes:
-    """Generate image using OpenAI DALL-E 3."""
+def _image_with_openai(prompt: str, api_key: str) -> bytes:
+    """Generate image using OpenAI DALL-E 3 with specific key."""
     from openai import OpenAI
 
-    client = OpenAI(api_key=config.OPENAI_API_KEY)
+    client = OpenAI(api_key=api_key)
 
     # Add POD-specific instructions
     pod_prompt = (

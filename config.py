@@ -13,6 +13,7 @@ load_dotenv()
 # ──────────────────────────────────────────────
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+OPENAI_API_KEY_2 = os.getenv("OPENAI_API_KEY_2", "")
 PRINTIFY_API_TOKEN = os.getenv("PRINTIFY_API_TOKEN", "")
 PRINTIFY_SHOP_ID = os.getenv("PRINTIFY_SHOP_ID", "")
 REDBUBBLE_EMAIL = os.getenv("REDBUBBLE_EMAIL", "")
