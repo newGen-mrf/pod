@@ -1,25 +1,29 @@
-# Project Progress: Custom POD Storefront
+# POD Storefront Automation & Stability Update (2026-04-28)
 
-## Current Status (2026-04-28)
-- **Storefront Tech Stack:** Next.js 16, React 19, Vanilla CSS (Premium Dark Theme).
-- **GitHub Repository:** `https://github.com/newGen-mrf/pod`
-- **Deployment Platform:** Vercel (`https://pod-beryl.vercel.app/`) — **LIVE and WORKING**.
-- **Automation:** GitHub Actions bot is now fixed (no more .gitignore conflicts).
+## Session Summary
+Successfully resolved all major pipeline blockers related to API quotas, model naming, and product publishing. The bot is now fully autonomous, using a multi-provider fallback system for both text and image generation, and is capable of publishing live products with smart pricing.
 
-## Completed Tasks
-1. **Design System:** Created `globals.css` with glassmorphism, gradient meshes, and custom animations.
-2. **Main Page:** Developed `page.tsx` featuring a hero section, scrolling marquee, category-filtered product grid, and quick-view modals.
-3. **API Integration:** Implemented `/api/products` route fetching data directly from Printify API.
-4. **Environment Configuration:** Identified `PRINTIFY_SHOP_ID` as `27343804`.
-5. **Vercel Setup:** Successfully deployed by setting Root Directory to `storefront` and Framework Preset to `Next.js`.
-6. **Bug Fixes:**
-   - Fixed missing `os` import in `uploaders/pinterest.py`.
-   - Removed Tailwind PostCSS plugin from `postcss.config.mjs` to fix potential build conflicts.
-   - **Critical:** Removed `logs/` and `outputs/` from `.gitignore` to prevent GitHub Actions automation from crashing when saving state.
+## Key Achievements
+1. **Multi-Brain Text Generation (Groq + Gemini + OpenAI)**: 
+   - Integrated **Groq** as the primary text engine (Llama 3.3).
+   - Gemini and OpenAI serve as fallbacks. This fixed the "quota exhausted" errors.
+2. **Ultimate Image Fallback (Pollinations.ai)**:
+   - Added **Pollinations.ai** as a free, no-key fallback for image generation.
+   - This ensures the bot *always* produces a design, even if Google/OpenAI accounts are restricted.
+3. **Smart Margin Bot & Direct Publishing**:
+   - Implemented a **40% profit margin** logic for all products.
+   - Fixed the Printify "Draft" issue—the bot now publishes products **Directly Live** to the store.
+4. **Mug Mockup Fix**:
+   - Resolved an issue where Mugs were showing T-shirt images. The bot now applies designs specifically to Mug print areas (front/back).
+5. **Scoreboard & Analytics**:
+   - Initialized `state.json` counters to track daily uploads and avoid KeyError crashes.
 
-## Ongoing Issues
-- None! The storefront and bot pipeline are now fully functional.
+## Environment & Stability
+- Primary Text: Groq (config.GROQ_API_KEY)
+- Primary Designer: Gemini (config.GEMINI_IMAGE_MODEL = "imagen-3.0")
+- Fallback Designer: Pollinations.ai (Free/Unlimited)
+- Storefront: Printify (config.PRINTIFY_SHOP_ID)
 
-## Key Credentials Needed for Vercel:
-- `PRINTIFY_API_TOKEN`: (User's private token)
-- `PRINTIFY_SHOP_ID`: `27343804`
+## Next Steps
+- Monitor live sales and SEO performance.
+- Occasionally check `logs/` to ensure the "Direct Publish" step is hitting 100% success rate across all platforms.

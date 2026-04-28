@@ -118,6 +118,8 @@ def run_worker(dry_run: bool = False):
         })
         
         today = datetime.now().strftime("%Y-%m-%d")
+        if "uploaded" not in state:
+            state["uploaded"] = {}
         for plat, res in results.items():
             if res.get("status") == "success":
                 state["uploaded"].setdefault(plat, []).append({
