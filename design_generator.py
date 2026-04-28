@@ -156,6 +156,13 @@ def _generate_image(prompt: str) -> bytes:
             errors.append(f"DALL-E 3 {key_name}: {e}")
             logger.warning(f"OpenAI {key_name} image gen failed: {e}")
 
+    # Attempt 3: Pollinations.ai (Absolute Fallback — Free and No-Key)
+    try:
+        return _image_with_pollinations(prompt)
+    except Exception as e:
+        errors.append(f"Pollinations: {e}")
+        logger.warning(f"Pollinations image gen failed: {e}")
+
     raise RuntimeError(f"All image generators failed: {'; '.join(errors)}")
 
 
@@ -185,6 +192,23 @@ def _image_with_gemini(prompt: str) -> bytes:
     if response.generated_images:
         return response.generated_images[0].image.image_bytes
     raise RuntimeError("Gemini returned no images")
+
+
+def _image_with_pollinations(prompt: str) -> bytes:
+    """Generate image using Pollinations.ai (Free, No-Key fallback)."""
+    import urllib.parse
+    
+    # Clean the prompt for URL
+    encoded_prompt = urllib.parse.quote(prompt)
+    width, height = 1024, 1024
+    seed = int(time.time())
+    
+    url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width={width}&height={height}&seed={seed}&nologo=true&enhance=true"
+    
+    logger.info(f"Using Pollinations fallback: {url}")
+    response = requests.get(url, timeout=60)
+    response.raise_for_status()
+    return response.content
 
 
 def _image_with_openai(prompt: str, api_key: str) -> bytes:
