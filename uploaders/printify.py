@@ -175,6 +175,28 @@ def _create_product(
     if not enabled_variants:
         raise RuntimeError(f"No variants found for blueprint {blueprint_id}")
 
+    # Handle different placeholders based on product type
+    # Mugs (638, etc.) usually want 'front' and 'back' or 'wrap'
+    if blueprint_id == 638:
+        placeholders = [
+            {
+                "position": "front",
+                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1, "angle": 0}]
+            },
+            {
+                "position": "back",
+                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1, "angle": 0}]
+            }
+        ]
+    else:
+        # Standard front-print for shirts/hoodies
+        placeholders = [
+            {
+                "position": "front",
+                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1, "angle": 0}]
+            }
+        ]
+
     # Build the product payload
     title = f"{seo['title']} | {product_name}"
     if len(title) > 200:
@@ -189,20 +211,7 @@ def _create_product(
         "print_areas": [
             {
                 "variant_ids": [v["id"] for v in enabled_variants],
-                "placeholders": [
-                    {
-                        "position": "front",
-                        "images": [
-                            {
-                                "id": image_id,
-                                "x": 0.5,
-                                "y": 0.5,
-                                "scale": 1,
-                                "angle": 0,
-                            }
-                        ],
-                    }
-                ],
+                "placeholders": placeholders,
             }
         ],
         "tags": seo.get("tags", [])[:13],
