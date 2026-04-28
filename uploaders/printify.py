@@ -83,14 +83,14 @@ def upload_to_printify(design_path: str, seo: dict) -> dict:
         for product in result["products"]:
             if product.get("status") != "failed" and product.get("id"):
                 try:
+                    # Quick wait to ensure Printify has processed the image properly
+                    time.sleep(5)
                     _publish_product(product["id"], seo, headers)
                     product["published"] = True
-                    logger.info(f"Published: {product['name']}")
+                    logger.info(f"SUCCESS: Published {product['name']} LIVE to store.")
                 except Exception as e:
                     product["published"] = False
-                    logger.error(f"Failed to publish {product['name']}: {e}")
-
-                time.sleep(1)
+                    logger.warning(f"Publish failed (might be processing delay): {e}")
 
     except Exception as e:
         logger.error(f"Printify upload pipeline failed: {e}")
@@ -254,8 +254,8 @@ def _publish_product(product_id: str, seo: dict, headers: dict) -> None:
 
 def _calculate_price(blueprint_id: int) -> int:
     """
-    Calculate retail price in cents.
-    Returns base cost + markup.
+    Calculate retail price in cents with a Smart Margin bot.
+    Ensures a consistent 40% profit margin.
     """
     # Approximate base costs (cents) by product type
     base_costs = {
@@ -264,7 +264,18 @@ def _calculate_price(blueprint_id: int) -> int:
         638: 800,   # Mug base ~$8
     }
     base = base_costs.get(blueprint_id, 1500)
-    return base + config.PRINTIFY_PRICE_MARKUP
+    
+    # Smart Margin Bot: Aim for 40% profit (Price = Cost / (1 - 0.4))
+    target_margin = 0.40
+    suggested_price = int(base / (1 - target_margin))
+    
+    # Ensure it's at least cost + our minimum markup
+    min_price = base + config.PRINTIFY_PRICE_MARKUP
+    
+    final_price = max(suggested_price, min_price)
+    
+    logger.info(f"Price Check Bot: Base {base}c -> Final {final_price}c (Margin: ~{int((1 - base/final_price)*100)}%)")
+    return final_price
 
 
 def get_shop_info() -> dict:
