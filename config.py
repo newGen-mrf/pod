@@ -150,7 +150,7 @@ IMAGE_FORMAT = "PNG"         # Always PNG for transparency
 REMOVE_BACKGROUND = True     # Run rembg background removal
 
 # Gemini Imagen model
-GEMINI_IMAGE_MODEL = "imagen-3.0-generate-001"
+GEMINI_IMAGE_MODEL = "imagen-3.0"
 # Gemini text model
 GEMINI_TEXT_MODEL = "gemini-2.0-flash"
 
