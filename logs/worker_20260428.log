@@ -166,3 +166,31 @@ Traceback (most recent call last):
     raise RuntimeError(f"All image generators failed: {'; '.join(errors)}")
 RuntimeError: All image generators failed: Gemini Imagen: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0-generate-001 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}; DALL-E 3 Primary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}; DALL-E 3 Secondary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
 2026-04-28 00:41:06,138 [pod.worker] INFO: === Completed Run #4 ===
+2026-04-28 00:45:18,502 [pod.worker] INFO: === Starting POD Pipeline Run #5 ===
+2026-04-28 00:45:18,502 [pod.worker] INFO: *** DRY RUN MODE: No uploads will occur ***
+2026-04-28 00:45:18,502 [pod.trends] INFO: Category selected: humor
+2026-04-28 00:45:18,502 [pod.trends] INFO: Discovering trends for category: humor
+2026-04-28 00:45:24,850 [pod.trends] INFO: Etsy: found 0 trends
+2026-04-28 00:45:32,223 [pod.trends] INFO: Pinterest: found 15 trends
+2026-04-28 00:45:32,318 [pod.trends] WARNING: Reddit scraping error: 403 Client Error: Blocked for url: https://old.reddit.com/r/funny/top/?t=week
+2026-04-28 00:45:32,319 [pod.trends] INFO: Reddit: found 0 trends
+2026-04-28 00:45:32,319 [pod.trends] INFO: Selected trend: Today I'm A Serious Goose Shirt Serious Goose Shirt Sarcastic Shirt Goose Gifts Funny Meme Shirt Animal Shirt Silly Goose Shirt Oversized Short Sleeve Classic Heavy Cotton T Shirt Printed Graphic Tee Women's Casual Short-Sleeved Topgraphic Tees Men Shirts Streetwear White Shirt Black Shirt White   Short Sleeve     Spring/Fall,Summer Men Clothing, size features are:Bust: ,Length: ,Sleeve Length: Funny Shirt Ideas, Sarcastic Shirts, Meme Shirt, Animal Shirts, Graphic Tees Women, Funny Shirts, Mens Tees, Comfort Colors, Womens Tees
+2026-04-28 00:45:32,319 [pod.design] INFO: Generating design | Category: humor | Style: sarcastic text-based design
+2026-04-28 00:45:33,212 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 00:45:33,226 [pod.design] INFO: Image prompt generated (494 chars)
+2026-04-28 00:45:34,076 [httpx] INFO: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0:predict "HTTP/1.1 404 Not Found"
+2026-04-28 00:45:34,077 [pod.design] WARNING: Gemini image gen failed: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-28 00:45:35,582 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 00:45:35,583 [pod.design] WARNING: OpenAI Primary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 00:45:35,810 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 00:45:35,811 [pod.design] WARNING: OpenAI Secondary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 00:45:35,811 [pod.worker] ERROR: Pipeline failed: All image generators failed: Gemini Imagen: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}; DALL-E 3 Primary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}; DALL-E 3 Secondary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+Traceback (most recent call last):
+  File "/home/runner/work/pod/pod/worker.py", line 91, in run_worker
+    design_path = design_generator.generate_design(trend, category)
+  File "/home/runner/work/pod/pod/design_generator.py", line 34, in generate_design
+    image_data = _generate_image(image_prompt)
+  File "/home/runner/work/pod/pod/design_generator.py", line 159, in _generate_image
+    raise RuntimeError(f"All image generators failed: {'; '.join(errors)}")
+RuntimeError: All image generators failed: Gemini Imagen: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}; DALL-E 3 Primary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}; DALL-E 3 Secondary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 00:45:35,812 [pod.worker] INFO: === Completed Run #5 ===
