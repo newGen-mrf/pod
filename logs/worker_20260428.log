@@ -255,3 +255,47 @@ Traceback (most recent call last):
     state["trends_used"].append(trend)
 KeyError: 'trends_used'
 2026-04-28 00:50:58,543 [pod.worker] INFO: === Completed Run #6 ===
+2026-04-28 00:55:35,633 [pod.worker] INFO: === Starting POD Pipeline Run #7 ===
+2026-04-28 00:55:35,633 [pod.trends] INFO: Category selected: professions
+2026-04-28 00:55:35,633 [pod.trends] INFO: Discovering trends for category: professions
+2026-04-28 00:55:39,800 [pod.trends] INFO: Etsy: found 0 trends
+2026-04-28 00:55:47,939 [pod.trends] INFO: Pinterest: found 15 trends
+2026-04-28 00:55:48,012 [pod.trends] WARNING: Reddit scraping error: 403 Client Error: Blocked for url: https://old.reddit.com/r/ProgrammerHumor/top/?t=week
+2026-04-28 00:55:48,013 [pod.trends] INFO: Reddit: found 0 trends
+2026-04-28 00:55:48,013 [pod.trends] INFO: Selected trend: 1pc Custom Teacher Clipboard With Teacher's Name Printed On It, Personalized Teacher Gift, Suitable For Teacher Appreciation Gift For Back To School Season, Teacher's Day And End Of Semester…
+2026-04-28 00:55:48,013 [pod.design] INFO: Generating design | Category: professions | Style: gym and fitness lifestyle
+2026-04-28 00:55:49,092 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 00:55:49,105 [pod.design] INFO: Image prompt generated (861 chars)
+2026-04-28 00:55:49,998 [httpx] INFO: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0:predict "HTTP/1.1 404 Not Found"
+2026-04-28 00:55:49,999 [pod.design] WARNING: Gemini image gen failed: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-28 00:55:50,769 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 00:55:50,770 [pod.design] WARNING: OpenAI Primary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 00:55:51,258 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 00:55:51,258 [pod.design] WARNING: OpenAI Secondary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 00:55:51,259 [pod.design] INFO: Using Pollinations fallback: https://image.pollinations.ai/prompt/Generate%20a%20high-quality%20image%20of%20a%20customized%20teacher%20clipboard%20with%20a%20gym%20and%20fitness%20lifestyle%20theme%2C%20on%20a%20pure%20white%20background%20%28%23FFFFFF%29.%20The%20clipboard%20should%20be%20centered%2C%20isolated%2C%20and%20have%20clean%2C%20crisp%20edges.%20It%20should%20feature%20a%20pair%20of%20dumbbells%20crossed%20over%20a%20stack%20of%20books%2C%20with%20a%20few%20apples%20and%20a%20whistle%20incorporated%20into%20the%20design%2C%20symbolizing%20the%20teacher%27s%20role%20in%20educating%20and%20guiding%20students.%20The%20dumbbells%20and%20books%20should%20be%20colorful%20and%20detailed%2C%20with%20vibrant%20hues%20of%20blue%2C%20green%2C%20and%20yellow.%20The%20overall%20design%20should%20be%20visually%20appealing%2C%20professional%2C%20and%20suitable%20for%20printing%20on%20a%20custom%20teacher%20clipboard%2C%20as%20well%20as%20on%20t-shirts%2C%20hoodies%2C%20and%20mugs.%20The%20style%20should%20evoke%20a%20sense%20of%20energy%2C%20motivation%2C%20and%20inspiration%2C%20perfect%20for%20a%20teacher%20appreciation%20gift%20during%20back%20to%20school%20season%2C%20teacher%27s%20day%2C%20or%20the%20end%20of%20the%20semester.?width=1024&height=1024&seed=1777337751&nologo=true&enhance=true
+2026-04-28 00:55:52,325 [pod.design] INFO: Raw image generated successfully
+2026-04-28 00:56:43,868 [pod.design] INFO: Background removed with rembg
+2026-04-28 00:56:43,868 [pod.design] INFO: Background removed
+2026-04-28 00:56:43,868 [pod.design] INFO: Upscaling from 768x768 to 5400x5400
+2026-04-28 00:57:00,713 [pod.design] INFO: Resolution verified/upscaled
+2026-04-28 00:57:00,714 [pod.design] INFO: Design saved: outputs/design_20260428_005700.png
+2026-04-28 00:57:00,714 [pod.seo] INFO: Generating SEO content for: 1pc Custom Teacher Clipboard With Teacher's Name Printed On It, Personalized Teacher Gift, Suitable For Teacher Appreciation Gift For Back To School Season, Teacher's Day And End Of Semester…
+2026-04-28 00:57:01,664 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 00:57:01,665 [pod.seo] INFO: Groq generated SEO successfully
+2026-04-28 00:57:01,665 [pod.seo] INFO: SEO generated — Title: Personalized Teacher Clipboard - Custom Name Printed... | Tags: 13
+2026-04-28 00:57:01,665 [pod.printify] INFO: Uploading design to Printify file library...
+2026-04-28 00:57:04,984 [pod.printify] INFO: Image uploaded — ID: 69f005dee3ce390430517e4e
+2026-04-28 00:57:15,703 [pod.printify] INFO: Product created: Unisex Gildan T-Shirt — ID: 69f005e482f043f0830f63b6
+2026-04-28 00:57:22,352 [pod.printify] INFO: Product created: Unisex Hoodie — ID: 69f005ee03e8d4a2f706fbde
+2026-04-28 00:57:27,392 [pod.printify] INFO: Product created: White Glossy Mug — ID: 69f005f5435b064adc0afdda
+2026-04-28 00:57:29,743 [pod.printify] ERROR: Failed to publish Unisex Gildan T-Shirt: Publish failed (400): {"status":"error","code":8254,"message":"Operation failed.","errors":{"reason":"Shop #27343804 of product \"69f005e482f043f0830f63b6\" is not connected to sales channel","code":8254}}
+2026-04-28 00:57:31,035 [pod.printify] ERROR: Failed to publish Unisex Hoodie: Publish failed (400): {"status":"error","code":8254,"message":"Operation failed.","errors":{"reason":"Shop #27343804 of product \"69f005ee03e8d4a2f706fbde\" is not connected to sales channel","code":8254}}
+2026-04-28 00:57:32,302 [pod.printify] ERROR: Failed to publish White Glossy Mug: Publish failed (400): {"status":"error","code":8254,"message":"Operation failed.","errors":{"reason":"Shop #27343804 of product \"69f005f5435b064adc0afdda\" is not connected to sales channel","code":8254}}
+2026-04-28 00:57:33,305 [pod.redbubble] INFO: Redbubble disabled (no credentials) — skipping
+2026-04-28 00:57:33,305 [pod.pinterest] INFO: Pinterest disabled (no credentials) — skipping
+2026-04-28 00:57:33,305 [pod.worker] ERROR: Pipeline failed: 'uploaded'
+Traceback (most recent call last):
+  File "/home/runner/work/pod/pod/worker.py", line 123, in run_worker
+    state["uploaded"].setdefault(plat, []).append({
+KeyError: 'uploaded'
+2026-04-28 00:57:33,306 [pod.worker] INFO: === Completed Run #7 ===

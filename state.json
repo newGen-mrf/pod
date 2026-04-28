@@ -1,6 +1,52 @@
 {
-  "run_count": 6,
-  "history": [],
-  "trends_used": [],
-  "last_error": null
+  "run_count": 7,
+  "history": [
+    {
+      "timestamp": "2026-04-28T00:57:33.305841",
+      "trend": "1pc Custom Teacher Clipboard With Teacher's Name Printed On It, Personalized Teacher Gift, Suitable For Teacher Appreciation Gift For Back To School Season, Teacher's Day And End Of Semester\u2026",
+      "category": "professions",
+      "design_path": "outputs/design_20260428_005700.png",
+      "seo_title": "Personalized Teacher Clipboard - Custom Name Printed",
+      "results": {
+        "printify": {
+          "status": "success",
+          "products": [
+            {
+              "id": "69f005e482f043f0830f63b6",
+              "name": "Unisex Gildan T-Shirt",
+              "title": "Personalized Teacher Clipboard - Custom Name Printed | Unisex Gildan T-Shirt",
+              "status": "created",
+              "published": false
+            },
+            {
+              "id": "69f005ee03e8d4a2f706fbde",
+              "name": "Unisex Hoodie",
+              "title": "Personalized Teacher Clipboard - Custom Name Printed | Unisex Hoodie",
+              "status": "created",
+              "published": false
+            },
+            {
+              "id": "69f005f5435b064adc0afdda",
+              "name": "White Glossy Mug",
+              "title": "Personalized Teacher Clipboard - Custom Name Printed | White Glossy Mug",
+              "status": "created",
+              "published": false
+            }
+          ]
+        },
+        "redbubble": {
+          "status": "skipped",
+          "reason": "no credentials"
+        },
+        "pinterest": {
+          "status": "skipped",
+          "reason": "no credentials"
+        }
+      }
+    }
+  ],
+  "trends_used": [
+    "1pc Custom Teacher Clipboard With Teacher's Name Printed On It, Personalized Teacher Gift, Suitable For Teacher Appreciation Gift For Back To School Season, Teacher's Day And End Of Semester\u2026"
+  ],
+  "last_error": "'uploaded'"
 }
