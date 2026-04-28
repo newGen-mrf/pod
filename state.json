@@ -1,5 +1,6 @@
 {
   "run_count": 6,
   "history": [],
-  "last_error": "'trends_used'"
+  "trends_used": [],
+  "last_error": null
 }

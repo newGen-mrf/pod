@@ -102,6 +102,8 @@ def run_worker(dry_run: bool = False):
             logger.info("DRY RUN: Skipping platform uploads")
             
         # Update State
+        if "trends_used" not in state:
+            state["trends_used"] = []
         state["trends_used"].append(trend)
         if len(state["trends_used"]) > config.MAX_HISTORY * 2:
             state["trends_used"] = state["trends_used"][-config.MAX_HISTORY * 2:]

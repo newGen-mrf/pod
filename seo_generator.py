@@ -20,21 +20,32 @@ def generate_seo(trend: str, category: dict) -> dict:
 
     prompt = _build_seo_prompt(trend, category["name"])
 
-    # Try Gemini first (cheaper/faster), fallback to OpenAI
+    # Try Groq (Stable & Free), Gemini (Standard), then OpenAI
     raw_output = None
+    
+    # Provider List
+    providers = [
+        ("Groq", _generate_with_groq),
+        ("Gemini", _generate_with_gemini),
+    ]
+    # Add OpenAI with both keys
+    if config.OPENAI_API_KEY:
+        providers.append(("OpenAI Primary", lambda p: _generate_with_openai(p, config.OPENAI_API_KEY)))
+    if config.OPENAI_API_KEY_2:
+        providers.append(("OpenAI Secondary", lambda p: _generate_with_openai(p, config.OPENAI_API_KEY_2)))
+
     for attempt in range(config.MAX_RETRIES):
-        try:
-            raw_output = _generate_with_gemini(prompt)
+        for name, func in providers:
+            try:
+                raw_output = func(prompt)
+                if raw_output:
+                    logger.info(f"{name} generated SEO successfully")
+                    break
+            except Exception as e:
+                logger.warning(f"{name} SEO gen failed (attempt {attempt + 1}): {e}")
+        if raw_output:
             break
-        except Exception as e:
-            logger.warning(f"Gemini SEO gen failed (attempt {attempt + 1}): {e}")
-
-        try:
-            raw_output = _generate_with_openai(prompt)
-            break
-        except Exception as e:
-            logger.warning(f"OpenAI SEO gen failed (attempt {attempt + 1}): {e}")
-
+        
         if attempt < config.MAX_RETRIES - 1:
             time.sleep(config.RETRY_DELAY * (attempt + 1))
 
@@ -80,11 +91,23 @@ def _generate_with_gemini(prompt: str) -> str:
     return response.text.strip()
 
 
-def _generate_with_openai(prompt: str) -> str:
-    """Generate SEO content using OpenAI."""
+def _generate_with_groq(prompt: str) -> str:
+    """Generate SEO content using Groq."""
+    from groq import Groq
+    
+    client = Groq(api_key=config.GROQ_API_KEY)
+    response = client.chat.completions.create(
+        model=config.GROQ_MODEL,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return response.choices[0].message.content.strip()
+
+
+def _generate_with_openai(prompt: str, api_key: str) -> str:
+    """Generate SEO content using OpenAI with specific key."""
     from openai import OpenAI
 
-    client = OpenAI(api_key=config.OPENAI_API_KEY)
+    client = OpenAI(api_key=api_key)
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[{"role": "user", "content": prompt}],
