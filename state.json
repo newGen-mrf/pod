@@ -1,4 +1,5 @@
 {
-  "run_count": 0,
-  "history": []
+  "run_count": 1,
+  "history": [],
+  "last_error": "All text generation providers failed"
 }
