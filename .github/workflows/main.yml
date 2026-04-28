@@ -59,4 +59,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Automated POD Update: State & Logs [skip ci]"
-          file_pattern: 'state.json logs/* outputs/rb_session.json outputs/*.png'
+          file_pattern: 'state.json logs/ outputs/'
