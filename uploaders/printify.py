@@ -181,11 +181,11 @@ def _create_product(
         placeholders = [
             {
                 "position": "front",
-                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1, "angle": 0}]
+                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1.3, "angle": 0}]
             },
             {
                 "position": "back",
-                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1, "angle": 0}]
+                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1.3, "angle": 0}]
             }
         ]
     else:
@@ -193,7 +193,7 @@ def _create_product(
         placeholders = [
             {
                 "position": "front",
-                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1, "angle": 0}]
+                "images": [{"id": image_id, "x": 0.5, "y": 0.5, "scale": 1.3, "angle": 0}]
             }
         ]
 

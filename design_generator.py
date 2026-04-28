@@ -255,6 +255,23 @@ def _remove_background(image_data: bytes) -> bytes:
         return image_data
 
 
+def _auto_crop(image_data: bytes) -> bytes:
+    """Crop the transparent padding out to ensure maximum size on Printify."""
+    try:
+        img = Image.open(io.BytesIO(image_data)).convert("RGBA")
+        bbox = img.getbbox()
+        if bbox:
+            img = img.crop(bbox)
+            buffer = io.BytesIO()
+            img.save(buffer, format="PNG", optimize=True)
+            logger.info("Image auto-cropped to non-transparent bounding box")
+            return buffer.getvalue()
+        return image_data
+    except Exception as e:
+        logger.warning(f"Auto-crop failed: {e}")
+        return image_data
+
+
 def _ensure_resolution(image_data: bytes, min_width=None, min_height=None) -> bytes:
     """
     Ensure the image meets minimum print resolution.
