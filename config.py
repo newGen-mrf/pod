@@ -14,6 +14,7 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_API_KEY_2 = os.getenv("OPENAI_API_KEY_2", "")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 PRINTIFY_API_TOKEN = os.getenv("PRINTIFY_API_TOKEN", "")
 PRINTIFY_SHOP_ID = os.getenv("PRINTIFY_SHOP_ID", "")
 REDBUBBLE_EMAIL = os.getenv("REDBUBBLE_EMAIL", "")
@@ -152,6 +153,9 @@ REMOVE_BACKGROUND = True     # Run rembg background removal
 GEMINI_IMAGE_MODEL = "imagen-3.0-generate-002"
 # Gemini text model
 GEMINI_TEXT_MODEL = "gemini-2.0-flash"
+
+# Groq model
+GROQ_MODEL = "llama-3.3-70b-versatile"
 
 # ──────────────────────────────────────────────
 # POD Master Design Prompt Template

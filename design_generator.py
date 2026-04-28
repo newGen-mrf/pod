@@ -58,21 +58,41 @@ def generate_design(trend: str, category: dict) -> str:
     return filepath
 
 
+def _prompt_with_groq(prompt: str) -> str:
+    """Generate text prompt using Groq."""
+    from groq import Groq
+
+    client = Groq(api_key=config.GROQ_API_KEY)
+    chat_completion = client.chat.completions.create(
+        messages=[{"role": "user", "content": prompt}],
+        model=config.GROQ_MODEL,
+    )
+    return chat_completion.choices[0].message.content.strip()
+
+
 def _generate_image_prompt(trend: str, style: str, category_name: str) -> str:
     """Use AI to create a detailed image generation prompt."""
     system_prompt = config.MASTER_DESIGN_PROMPT.format(
         trend=trend, style=style, category=category_name
     )
 
-    # Try Gemini first, fallback to OpenAI keys
+    # Multi-Provider Fallback Order: Groq -> Gemini -> OpenAI Primary -> OpenAI Secondary
     for attempt in range(config.MAX_RETRIES):
-        # 1. Try Gemini
-        try:
-            return _prompt_with_gemini(system_prompt)
-        except Exception as e:
-            logger.warning(f"Gemini text gen failed (attempt {attempt + 1}): {e}")
+        # 1. Try Groq (Best for free tier stability)
+        if config.GROQ_API_KEY:
+            try:
+                return _prompt_with_groq(system_prompt)
+            except Exception as e:
+                logger.warning(f"Groq text gen failed (attempt {attempt + 1}): {e}")
 
-        # 2. Try all available OpenAI keys
+        # 2. Try Gemini
+        if config.GEMINI_API_KEY:
+            try:
+                return _prompt_with_gemini(system_prompt)
+            except Exception as e:
+                logger.warning(f"Gemini text gen failed (attempt {attempt + 1}): {e}")
+
+        # 3. Try all available OpenAI keys
         for key_name, key in [("Primary", config.OPENAI_API_KEY), ("Secondary", config.OPENAI_API_KEY_2)]:
             if not key:
                 continue
