@@ -60,3 +60,4 @@ jobs:
         with:
           commit_message: "Automated POD Update: State & Logs [skip ci]"
           file_pattern: 'state.json logs/ outputs/'
+          add_options: '-f'
