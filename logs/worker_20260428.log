@@ -299,3 +299,102 @@ Traceback (most recent call last):
     state["uploaded"].setdefault(plat, []).append({
 KeyError: 'uploaded'
 2026-04-28 00:57:33,306 [pod.worker] INFO: === Completed Run #7 ===
+2026-04-28 13:24:46,881 [pod.worker] INFO: === Starting POD Pipeline Run #8 ===
+2026-04-28 13:24:46,881 [pod.trends] INFO: Category selected: humor
+2026-04-28 13:24:46,881 [pod.trends] INFO: Discovering trends for category: humor
+2026-04-28 13:24:52,406 [pod.trends] INFO: Etsy: found 0 trends
+2026-04-28 13:25:01,039 [pod.trends] INFO: Pinterest: found 15 trends
+2026-04-28 13:25:01,154 [pod.trends] WARNING: Reddit scraping error: 403 Client Error: Blocked for url: https://old.reddit.com/r/funny/top/?t=week
+2026-04-28 13:25:01,154 [pod.trends] INFO: Reddit: found 0 trends
+2026-04-28 13:25:01,155 [pod.trends] INFO: Selected trend: Hilarious Sayings, Clever Sayings, Funny Cricut Projects, Weird Signs, Svg Images, Creative Lettering Quotes, Svg Quotes Funny, Cute Shirt Designs, Sarcastic Quotes Funny
+2026-04-28 13:25:01,155 [pod.design] INFO: Generating design | Category: humor | Style: witty one-liner typography
+2026-04-28 13:25:02,443 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 13:25:02,457 [pod.design] INFO: Image prompt generated (714 chars)
+2026-04-28 13:25:03,360 [httpx] INFO: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0:predict "HTTP/1.1 404 Not Found"
+2026-04-28 13:25:03,361 [pod.design] WARNING: Gemini image gen failed: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-28 13:25:04,780 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 13:25:04,781 [pod.design] WARNING: OpenAI Primary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 13:25:05,674 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 13:25:05,675 [pod.design] WARNING: OpenAI Secondary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 13:25:05,675 [pod.design] INFO: Using Pollinations fallback: https://image.pollinations.ai/prompt/Generate%20a%20high-resolution%2C%20print-on-demand%20ready%20design%20featuring%20a%20cartoonish%2C%20exaggerated%20illustration%20of%20a%20cat%20wearing%20a%20pair%20of%20trendy%2C%20oversized%20sunglasses%20and%20a%20sarcastic%20expression%2C%20isolated%20on%20a%20pure%20white%20background%20%28%23FFFFFF%29%2C%20with%20clean%20edges%2C%20high%20detail%2C%20and%20vibrant%20colors%2C%20incorporating%20witty%20and%20humorous%20elements%20through%20visual%20storytelling%2C%20perfect%20for%20a%20variety%20of%20products%20such%20as%20t-shirts%2C%20hoodies%2C%20and%20mugs%2C%20with%20a%20focus%20on%20creative%20and%20funny%20design%20elements%20that%20appeal%20to%20a%20wide%20audience%2C%20and%20a%20style%20reminiscent%20of%20popular%20funny%20Cricut%20projects%20and%20svg%20images%2C%20while%20ensuring%20the%20subject%20is%20completely%20centered%20and%20free%20of%20any%20text%2C%20words%2C%20letters%2C%20borders%2C%20frames%2C%20or%20background%20patterns.?width=1024&height=1024&seed=1777382705&nologo=true&enhance=true
+2026-04-28 13:25:07,193 [pod.design] INFO: Raw image generated successfully
+2026-04-28 13:25:58,409 [pod.design] INFO: Background removed with rembg
+2026-04-28 13:25:58,409 [pod.design] INFO: Background removed
+2026-04-28 13:25:58,410 [pod.design] INFO: Upscaling from 768x768 to 5400x5400
+2026-04-28 13:26:24,291 [pod.design] INFO: Resolution verified/upscaled
+2026-04-28 13:26:24,293 [pod.design] INFO: Design saved: outputs/design_20260428_132624.png
+2026-04-28 13:26:24,294 [pod.seo] INFO: Generating SEO content for: Hilarious Sayings, Clever Sayings, Funny Cricut Projects, Weird Signs, Svg Images, Creative Lettering Quotes, Svg Quotes Funny, Cute Shirt Designs, Sarcastic Quotes Funny
+2026-04-28 13:26:25,290 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 13:26:25,291 [pod.seo] INFO: Groq generated SEO successfully
+2026-04-28 13:26:25,291 [pod.seo] INFO: SEO generated — Title: Funny Sayings & Sarcastic Quotes for Humor Lovers... | Tags: 13
+2026-04-28 13:26:25,291 [pod.printify] INFO: Uploading design to Printify file library...
+2026-04-28 13:26:28,473 [pod.printify] INFO: Image uploaded — ID: 69f0b582ea5205bba944dfea
+2026-04-28 13:26:29,050 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:29,051 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 13:26:35,802 [pod.printify] INFO: Product created: Unisex Gildan T-Shirt — ID: 69f0b588f8d3f9d1ef0b2392
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,215 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:38,216 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 13:26:42,197 [pod.printify] INFO: Product created: Unisex Hoodie — ID: 69f0b58fe6d7e1303803f801
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,617 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,618 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,618 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,618 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,618 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,618 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,618 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,618 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:44,618 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 13:26:46,366 [pod.printify] INFO: Product created: White Glossy Mug — ID: 69f0b595f8d3f9d1ef0b23a0
+2026-04-28 13:26:53,713 [pod.printify] WARNING: Publish failed (might be processing delay): Publish failed (400): {"status":"error","code":8254,"message":"Operation failed.","errors":{"reason":"Shop #27343804 of product \"69f0b588f8d3f9d1ef0b2392\" is not connected to sales channel","code":8254}}
+2026-04-28 13:26:59,057 [pod.printify] WARNING: Publish failed (might be processing delay): Publish failed (400): {"status":"error","code":8254,"message":"Operation failed.","errors":{"reason":"Shop #27343804 of product \"69f0b58fe6d7e1303803f801\" is not connected to sales channel","code":8254}}
+2026-04-28 13:27:04,379 [pod.printify] WARNING: Publish failed (might be processing delay): Publish failed (400): {"status":"error","code":8254,"message":"Operation failed.","errors":{"reason":"Shop #27343804 of product \"69f0b595f8d3f9d1ef0b23a0\" is not connected to sales channel","code":8254}}
+2026-04-28 13:27:04,380 [pod.redbubble] INFO: Redbubble disabled (no credentials) — skipping
+2026-04-28 13:27:04,380 [pod.pinterest] INFO: Pinterest disabled (no credentials) — skipping
+2026-04-28 13:27:04,381 [pod.worker] INFO: === Completed Run #8 ===
