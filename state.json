@@ -1,5 +1,5 @@
 {
-  "run_count": 8,
+  "run_count": 9,
   "history": [
     {
       "timestamp": "2026-04-28T13:27:04.380809",
@@ -43,16 +43,64 @@
           "reason": "no credentials"
         }
       }
+    },
+    {
+      "timestamp": "2026-04-28T19:15:48.240992",
+      "trend": "a watercolor painting of mountains, trees and a river in the foreground with wildflowers",
+      "category": "nature",
+      "design_path": "outputs/design_20260428_191434.png",
+      "seo_title": "Serene Mountain Landscape Watercolor Art",
+      "results": {
+        "printify": {
+          "status": "success",
+          "products": [
+            {
+              "id": "69f107216e573ac4800f6944",
+              "name": "Unisex Gildan T-Shirt",
+              "title": "Serene Mountain Landscape Watercolor Art | Unisex Gildan T-Shirt",
+              "status": "created",
+              "published": false
+            },
+            {
+              "id": "69f107323e84ce50e5042627",
+              "name": "Unisex Hoodie",
+              "title": "Serene Mountain Landscape Watercolor Art | Unisex Hoodie",
+              "status": "created",
+              "published": false
+            },
+            {
+              "id": "69f10742b64a95a811071beb",
+              "name": "White Glossy Mug",
+              "title": "Serene Mountain Landscape Watercolor Art | White Glossy Mug",
+              "status": "created",
+              "published": false
+            }
+          ]
+        },
+        "redbubble": {
+          "status": "skipped",
+          "reason": "no credentials"
+        },
+        "pinterest": {
+          "status": "skipped",
+          "reason": "no credentials"
+        }
+      }
     }
   ],
   "trends_used": [
-    "Hilarious Sayings, Clever Sayings, Funny Cricut Projects, Weird Signs, Svg Images, Creative Lettering Quotes, Svg Quotes Funny, Cute Shirt Designs, Sarcastic Quotes Funny"
+    "Hilarious Sayings, Clever Sayings, Funny Cricut Projects, Weird Signs, Svg Images, Creative Lettering Quotes, Svg Quotes Funny, Cute Shirt Designs, Sarcastic Quotes Funny",
+    "a watercolor painting of mountains, trees and a river in the foreground with wildflowers"
   ],
   "uploaded": {
     "printify": [
       {
         "date": "2026-04-28",
         "trend": "Hilarious Sayings, Clever Sayings, Funny Cricut Projects, Weird Signs, Svg Images, Creative Lettering Quotes, Svg Quotes Funny, Cute Shirt Designs, Sarcastic Quotes Funny"
+      },
+      {
+        "date": "2026-04-28",
+        "trend": "a watercolor painting of mountains, trees and a river in the foreground with wildflowers"
       }
     ]
   },
