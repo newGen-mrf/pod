@@ -1,5 +1,5 @@
 {
-  "run_count": 5,
+  "run_count": 6,
   "history": [],
-  "last_error": "All image generators failed: Gemini Imagen: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}; DALL-E 3 Primary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}; DALL-E 3 Secondary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}"
+  "last_error": "'trends_used'"
 }
