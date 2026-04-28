@@ -5,11 +5,5 @@ __pycache__/
 .vscode/
 
 # Ignore old output images but keep session cookies and the folder
-# Ignore old output images but keep session cookies and the folder
-outputs/*
-!outputs/.gitkeep
-!outputs/rb_session.json
+# Ignore local logs and images - REMOVED to allow bot tracking
 
-# Ignore local logs
-logs/*
-!logs/.gitkeep
