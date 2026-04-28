@@ -701,3 +701,109 @@ KeyError: 'uploaded'
 2026-04-28 22:46:28,751 [pod.redbubble] INFO: Redbubble disabled (no credentials) — skipping
 2026-04-28 22:46:28,751 [pod.pinterest] INFO: Pinterest disabled (no credentials) — skipping
 2026-04-28 22:46:28,752 [pod.worker] INFO: === Completed Run #11 ===
+2026-04-28 23:13:54,019 [pod.worker] INFO: === Starting POD Pipeline Run #12 ===
+2026-04-28 23:13:54,019 [pod.trends] INFO: Category selected: humor
+2026-04-28 23:13:54,020 [pod.trends] INFO: Discovering trends for category: humor
+2026-04-28 23:13:58,256 [pod.trends] INFO: Etsy: found 0 trends
+2026-04-28 23:14:05,644 [pod.trends] INFO: Pinterest: found 0 trends
+2026-04-28 23:14:05,743 [pod.trends] WARNING: Reddit scraping error: 403 Client Error: Blocked for url: https://old.reddit.com/r/funny/top/?t=week
+2026-04-28 23:14:05,743 [pod.trends] INFO: Reddit: found 0 trends
+2026-04-28 23:14:06,777 [google_genai.models] INFO: AFC is enabled with max remote calls: 10.
+2026-04-28 23:14:06,889 [httpx] INFO: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-04-28 23:14:08,284 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-28 23:14:08,285 [openai._base_client] INFO: Retrying request to /chat/completions in 0.450238 seconds
+2026-04-28 23:14:09,519 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-28 23:14:09,519 [openai._base_client] INFO: Retrying request to /chat/completions in 0.950729 seconds
+2026-04-28 23:14:10,724 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-04-28 23:14:10,725 [pod.trends] INFO: AI-generated fallback trend: A sarcastic coffee mug character with attitude
+2026-04-28 23:14:10,725 [pod.design] INFO: Generating design | Category: humor | Style: meme-inspired graphic design
+2026-04-28 23:14:11,841 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 23:14:11,857 [pod.design] INFO: Image prompt generated (813 chars)
+2026-04-28 23:14:11,956 [httpx] INFO: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0:predict "HTTP/1.1 404 Not Found"
+2026-04-28 23:14:11,957 [pod.design] WARNING: Gemini image gen failed: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-28 23:14:12,421 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 23:14:12,422 [pod.design] WARNING: OpenAI Primary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 23:14:13,344 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 23:14:13,344 [pod.design] WARNING: OpenAI Secondary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 23:14:13,344 [pod.design] INFO: Using Pollinations fallback: https://image.pollinations.ai/prompt/Generate%20a%20high-resolution%2C%20meme-inspired%20graphic%20design%20of%20a%20sarcastic%20coffee%20mug%20character%20with%20attitude%2C%20isolated%20on%20a%20pure%20white%20background%20%28%23FFFFFF%29.%20The%20character%20is%20a%20anthropomorphic%20coffee%20mug%20with%20a%20sassy%20expression%2C%20crosses%20its%20arms%2C%20and%20raises%20an%20eyebrow.%20It%20has%20a%20bold%2C%20bright%20blue%20handle%20and%20a%20vibrant%20orange%20interior%2C%20with%20a%20few%20coffee%20stains%20and%20a%20chip%20on%20its%20rim%20to%20add%20a%20touch%20of%20realism.%20The%20mug%27s%20%22face%22%20is%20designed%20to%20resemble%20a%20grumpy%2C%20sleepy%20expression%2C%20with%20a%20pair%20of%20closed%20eyes%20and%20a%20slight%20smirk.%20The%20overall%20design%20should%20have%20clean%2C%20crisp%20edges%2C%20high%20detail%2C%20and%20vibrant%20colors%2C%20making%20it%20perfect%20for%20printing%20on%20a%20variety%20of%20products%20such%20as%20t-shirts%2C%20hoodies%2C%20and%20mugs.%20The%20character%20should%20be%20centered%20and%20take%20up%20most%20of%20the%20canvas%2C%20with%20a%20minimum%20resolution%20of%202000%20x%202000%20pixels.?width=1024&height=1024&seed=1777418053&nologo=true&enhance=true
+2026-04-28 23:14:14,934 [pod.design] INFO: Raw image generated successfully
+2026-04-28 23:15:06,303 [pod.design] INFO: Background removed with rembg
+2026-04-28 23:15:06,304 [pod.design] INFO: Background removed
+2026-04-28 23:15:06,304 [pod.design] INFO: Upscaling from 768x768 to 5400x5400
+2026-04-28 23:15:20,535 [pod.design] INFO: Resolution verified/upscaled
+2026-04-28 23:15:20,536 [pod.design] INFO: Design saved: outputs/design_20260428_231520.png
+2026-04-28 23:15:20,539 [pod.seo] INFO: Generating SEO content for: A sarcastic coffee mug character with attitude
+2026-04-28 23:15:21,920 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 23:15:21,921 [pod.seo] INFO: Groq generated SEO successfully
+2026-04-28 23:15:21,921 [pod.seo] INFO: SEO generated — Title: Sassy Coffee Lover Mug - Funny Morning Attitude... | Tags: 13
+2026-04-28 23:15:21,921 [pod.printify] INFO: Uploading design to Printify file library...
+2026-04-28 23:15:26,012 [pod.printify] INFO: Image uploaded — ID: 69f13f8be6ab5a2244a6b825
+2026-04-28 23:15:26,091 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,091 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,091 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,092 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:26,093 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 23:15:34,803 [pod.printify] INFO: Product created: Unisex Gildan T-Shirt — ID: 69f13f915e82523502029080
+2026-04-28 23:15:36,881 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,882 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,883 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,883 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:36,883 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 23:15:40,471 [pod.printify] INFO: Product created: Unisex Hoodie — ID: 69f13f9914a1e925940df807
+2026-04-28 23:15:42,770 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,770 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,770 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,770 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,770 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,770 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:42,771 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 23:15:45,737 [pod.printify] INFO: Product created: White Glossy Mug — ID: 69f13f9fcbda58f3e3026c5e
+2026-04-28 23:15:58,380 [pod.printify] INFO: SUCCESS: Published Unisex Gildan T-Shirt LIVE to store.
+2026-04-28 23:16:06,097 [pod.printify] INFO: SUCCESS: Published Unisex Hoodie LIVE to store.
+2026-04-28 23:16:12,959 [pod.printify] INFO: SUCCESS: Published White Glossy Mug LIVE to store.
+2026-04-28 23:16:12,960 [pod.redbubble] INFO: Redbubble disabled (no credentials) — skipping
+2026-04-28 23:16:12,960 [pod.pinterest] INFO: Pinterest disabled (no credentials) — skipping
+2026-04-28 23:16:12,960 [pod.worker] INFO: === Completed Run #12 ===
