@@ -110,3 +110,31 @@ Traceback (most recent call last):
     raise RuntimeError("All text generation providers failed")
 RuntimeError: All text generation providers failed
 2026-04-28 00:28:35,344 [pod.worker] INFO: === Completed Run #2 ===
+2026-04-28 00:35:21,989 [pod.worker] INFO: === Starting POD Pipeline Run #3 ===
+2026-04-28 00:35:21,989 [pod.worker] INFO: *** DRY RUN MODE: No uploads will occur ***
+2026-04-28 00:35:21,989 [pod.trends] INFO: Category selected: pop_culture
+2026-04-28 00:35:21,989 [pod.trends] INFO: Discovering trends for category: pop_culture
+2026-04-28 00:35:26,262 [pod.trends] INFO: Etsy: found 0 trends
+2026-04-28 00:35:33,985 [pod.trends] INFO: Pinterest: found 15 trends
+2026-04-28 00:35:34,134 [pod.trends] WARNING: Reddit scraping error: 403 Client Error: Blocked for url: https://old.reddit.com/r/retrogaming/top/?t=week
+2026-04-28 00:35:34,135 [pod.trends] INFO: Reddit: found 0 trends
+2026-04-28 00:35:34,135 [pod.trends] INFO: Selected trend: a woman wearing sunglasses blowing a bubble with a star on it's nose in front of a blue and yellow background
+2026-04-28 00:35:34,135 [pod.design] INFO: Generating design | Category: pop_culture | Style: vaporwave aesthetic design
+2026-04-28 00:35:35,518 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 00:35:35,534 [pod.design] INFO: Image prompt generated (1033 chars)
+2026-04-28 00:35:36,420 [httpx] INFO: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict "HTTP/1.1 404 Not Found"
+2026-04-28 00:35:36,421 [pod.design] WARNING: Gemini image gen failed: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0-generate-002 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-28 00:35:37,951 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 00:35:37,952 [pod.design] WARNING: OpenAI Primary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 00:35:38,861 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 00:35:38,861 [pod.design] WARNING: OpenAI Secondary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 00:35:38,861 [pod.worker] ERROR: Pipeline failed: All image generators failed: Gemini Imagen: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0-generate-002 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}; DALL-E 3 Primary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}; DALL-E 3 Secondary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+Traceback (most recent call last):
+  File "/home/runner/work/pod/pod/worker.py", line 91, in run_worker
+    design_path = design_generator.generate_design(trend, category)
+  File "/home/runner/work/pod/pod/design_generator.py", line 34, in generate_design
+    image_data = _generate_image(image_prompt)
+  File "/home/runner/work/pod/pod/design_generator.py", line 159, in _generate_image
+    raise RuntimeError(f"All image generators failed: {'; '.join(errors)}")
+RuntimeError: All image generators failed: Gemini Imagen: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0-generate-002 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}; DALL-E 3 Primary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}; DALL-E 3 Secondary: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 00:35:38,862 [pod.worker] INFO: === Completed Run #3 ===
