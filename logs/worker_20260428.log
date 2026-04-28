@@ -497,3 +497,102 @@ KeyError: 'uploaded'
 2026-04-28 19:15:48,240 [pod.redbubble] INFO: Redbubble disabled (no credentials) — skipping
 2026-04-28 19:15:48,240 [pod.pinterest] INFO: Pinterest disabled (no credentials) — skipping
 2026-04-28 19:15:48,241 [pod.worker] INFO: === Completed Run #9 ===
+2026-04-28 22:28:10,128 [pod.worker] INFO: === Starting POD Pipeline Run #10 ===
+2026-04-28 22:28:10,128 [pod.trends] INFO: Category selected: motivation
+2026-04-28 22:28:10,128 [pod.trends] INFO: Discovering trends for category: motivation
+2026-04-28 22:28:14,303 [pod.trends] INFO: Etsy: found 0 trends
+2026-04-28 22:28:22,454 [pod.trends] INFO: Pinterest: found 15 trends
+2026-04-28 22:28:22,510 [pod.trends] WARNING: Reddit scraping error: 403 Client Error: Blocked for url: https://old.reddit.com/r/GetMotivated/top/?t=week
+2026-04-28 22:28:22,511 [pod.trends] INFO: Reddit: found 0 trends
+2026-04-28 22:28:22,511 [pod.trends] INFO: Selected trend: Motivational Quote Sticker - Believe in Yourself | Positive Affirmation | Printable Digital Download
+2026-04-28 22:28:22,511 [pod.design] INFO: Generating design | Category: motivation | Style: hand-lettered quote artwork
+2026-04-28 22:28:23,572 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 22:28:23,588 [pod.design] INFO: Image prompt generated (579 chars)
+2026-04-28 22:28:24,539 [httpx] INFO: HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0:predict "HTTP/1.1 404 Not Found"
+2026-04-28 22:28:24,539 [pod.design] WARNING: Gemini image gen failed: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'models/imagen-3.0 is not found for API version v1beta, or is not supported for predict. Call ListModels to see the list of available models and their supported methods.', 'status': 'NOT_FOUND'}}
+2026-04-28 22:28:26,196 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 22:28:26,197 [pod.design] WARNING: OpenAI Primary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 22:28:27,102 [httpx] INFO: HTTP Request: POST https://api.openai.com/v1/images/generations "HTTP/1.1 400 Bad Request"
+2026-04-28 22:28:27,103 [pod.design] WARNING: OpenAI Secondary image gen failed: Error code: 400 - {'error': {'message': 'Billing hard limit has been reached', 'type': 'image_generation_user_error', 'param': None, 'code': 'billing_hard_limit_reached'}}
+2026-04-28 22:28:27,103 [pod.design] INFO: Using Pollinations fallback: https://image.pollinations.ai/prompt/Create%20a%20high-resolution%2C%20hand-lettered%20quote%20artwork%20design%20on%20a%20pure%20white%20background%20%28%23FFFFFF%29%2C%20featuring%20a%20stylized%2C%20cursive%20font%20with%20the%20phrase%20%22Believe%20in%20Yourself%22%20as%20the%20central%20subject%2C%20using%20a%20vibrant%20color%20palette%20with%20shades%20of%20bright%20blue%20%28%2303A9F4%29%20and%20sunshine%20yellow%20%28%23F7DC6F%29%2C%20with%20clean%2C%20crisp%20edges%20and%20intricate%20details%2C%20isolated%20and%20centered%2C%20with%20no%20borders%2C%20frames%2C%20or%20background%20patterns%2C%20optimized%20for%20print-on-demand%20products%20such%20as%20t-shirts%2C%20hoodies%2C%20and%20mugs%2C%20with%20a%20professional%20quality%20level%20suitable%20for%20a%20best-selling%20design%20on%20Etsy%20or%20Redbubble.?width=1024&height=1024&seed=1777415307&nologo=true&enhance=true
+2026-04-28 22:28:28,073 [pod.design] INFO: Raw image generated successfully
+2026-04-28 22:29:20,618 [pod.design] INFO: Background removed with rembg
+2026-04-28 22:29:20,618 [pod.design] INFO: Background removed
+2026-04-28 22:29:20,618 [pod.design] INFO: Upscaling from 768x768 to 5400x5400
+2026-04-28 22:29:36,031 [pod.design] INFO: Resolution verified/upscaled
+2026-04-28 22:29:36,034 [pod.design] INFO: Design saved: outputs/design_20260428_222936.png
+2026-04-28 22:29:36,034 [pod.seo] INFO: Generating SEO content for: Motivational Quote Sticker - Believe in Yourself | Positive Affirmation | Printable Digital Download
+2026-04-28 22:29:37,232 [httpx] INFO: HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-04-28 22:29:37,233 [pod.seo] INFO: Groq generated SEO successfully
+2026-04-28 22:29:37,233 [pod.seo] INFO: SEO generated — Title: Believe in Yourself Sticker - Motivational Quote Decal for D... | Tags: 13
+2026-04-28 22:29:37,234 [pod.printify] INFO: Uploading design to Printify file library...
+2026-04-28 22:29:40,216 [pod.printify] INFO: Image uploaded — ID: 69f134d22ee33b10bcf44117
+2026-04-28 22:29:40,281 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,281 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,281 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,281 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,282 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:40,283 [pod.printify] INFO: Price Check Bot: Base 1300c -> Final 2166c (Margin: ~39%)
+2026-04-28 22:29:50,897 [pod.printify] INFO: Product created: Unisex Gildan T-Shirt — ID: 69f134d814a1e925940df189
+2026-04-28 22:29:52,943 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,944 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,945 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,945 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,945 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:29:52,945 [pod.printify] INFO: Price Check Bot: Base 2500c -> Final 4166c (Margin: ~39%)
+2026-04-28 22:30:10,248 [pod.printify] INFO: Product created: Unisex Hoodie — ID: 69f134e3b64a95a81107336b
+2026-04-28 22:30:12,586 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,586 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,586 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,586 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,586 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,586 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,586 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:12,587 [pod.printify] INFO: Price Check Bot: Base 800c -> Final 1333c (Margin: ~39%)
+2026-04-28 22:30:16,428 [pod.printify] INFO: Product created: White Glossy Mug — ID: 69f134f50165b48fda00f3b1
+2026-04-28 22:30:29,976 [pod.printify] INFO: SUCCESS: Published Unisex Gildan T-Shirt LIVE to store.
+2026-04-28 22:30:39,493 [pod.printify] INFO: SUCCESS: Published Unisex Hoodie LIVE to store.
+2026-04-28 22:30:47,151 [pod.printify] INFO: SUCCESS: Published White Glossy Mug LIVE to store.
+2026-04-28 22:30:47,151 [pod.redbubble] INFO: Redbubble disabled (no credentials) — skipping
+2026-04-28 22:30:47,151 [pod.pinterest] INFO: Pinterest disabled (no credentials) — skipping
+2026-04-28 22:30:47,152 [pod.worker] INFO: === Completed Run #10 ===

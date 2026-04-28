@@ -1,5 +1,5 @@
 {
-  "run_count": 9,
+  "run_count": 10,
   "history": [
     {
       "timestamp": "2026-04-28T13:27:04.380809",
@@ -86,11 +86,55 @@
           "reason": "no credentials"
         }
       }
+    },
+    {
+      "timestamp": "2026-04-28T22:30:47.151664",
+      "trend": "Motivational Quote Sticker - Believe in Yourself | Positive Affirmation | Printable Digital Download",
+      "category": "motivation",
+      "design_path": "outputs/design_20260428_222936.png",
+      "seo_title": "Believe in Yourself Sticker - Motivational Quote Decal for Dreamers",
+      "results": {
+        "printify": {
+          "status": "success",
+          "products": [
+            {
+              "id": "69f134d814a1e925940df189",
+              "name": "Unisex Gildan T-Shirt",
+              "title": "Believe in Yourself Sticker - Motivational Quote Decal for Dreamers | Unisex Gildan T-Shirt",
+              "status": "created",
+              "published": true
+            },
+            {
+              "id": "69f134e3b64a95a81107336b",
+              "name": "Unisex Hoodie",
+              "title": "Believe in Yourself Sticker - Motivational Quote Decal for Dreamers | Unisex Hoodie",
+              "status": "created",
+              "published": true
+            },
+            {
+              "id": "69f134f50165b48fda00f3b1",
+              "name": "White Glossy Mug",
+              "title": "Believe in Yourself Sticker - Motivational Quote Decal for Dreamers | White Glossy Mug",
+              "status": "created",
+              "published": true
+            }
+          ]
+        },
+        "redbubble": {
+          "status": "skipped",
+          "reason": "no credentials"
+        },
+        "pinterest": {
+          "status": "skipped",
+          "reason": "no credentials"
+        }
+      }
     }
   ],
   "trends_used": [
     "Hilarious Sayings, Clever Sayings, Funny Cricut Projects, Weird Signs, Svg Images, Creative Lettering Quotes, Svg Quotes Funny, Cute Shirt Designs, Sarcastic Quotes Funny",
-    "a watercolor painting of mountains, trees and a river in the foreground with wildflowers"
+    "a watercolor painting of mountains, trees and a river in the foreground with wildflowers",
+    "Motivational Quote Sticker - Believe in Yourself | Positive Affirmation | Printable Digital Download"
   ],
   "uploaded": {
     "printify": [
@@ -101,6 +145,10 @@
       {
         "date": "2026-04-28",
         "trend": "a watercolor painting of mountains, trees and a river in the foreground with wildflowers"
+      },
+      {
+        "date": "2026-04-28",
+        "trend": "Motivational Quote Sticker - Believe in Yourself | Positive Affirmation | Printable Digital Download"
       }
     ]
   },
