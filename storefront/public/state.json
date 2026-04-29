@@ -1,5 +1,5 @@
 {
-  "run_count": 10,
+  "run_count": 12,
   "history": [
     {
       "timestamp": "2026-04-28T13:27:04.380809",
@@ -129,12 +129,100 @@
           "reason": "no credentials"
         }
       }
+    },
+    {
+      "timestamp": "2026-04-28T22:46:28.751881",
+      "trend": "A cozy autumn scene with falling leaves and warm colors",
+      "category": "seasonal",
+      "design_path": "outputs/design_20260428_224543.png",
+      "seo_title": "Cozy Autumn Leaves Falling Warm Colors Art",
+      "results": {
+        "printify": {
+          "status": "success",
+          "products": [
+            {
+              "id": "69f138a00f50f0059e0770d6",
+              "name": "Unisex Gildan T-Shirt",
+              "title": "Cozy Autumn Leaves Falling Warm Colors Art | Unisex Gildan T-Shirt",
+              "status": "created",
+              "published": true
+            },
+            {
+              "id": "69f138a75e82523502028c58",
+              "name": "Unisex Hoodie",
+              "title": "Cozy Autumn Leaves Falling Warm Colors Art | Unisex Hoodie",
+              "status": "created",
+              "published": true
+            },
+            {
+              "id": "69f138ab4568b0bfc50be05d",
+              "name": "White Glossy Mug",
+              "title": "Cozy Autumn Leaves Falling Warm Colors Art | White Glossy Mug",
+              "status": "created",
+              "published": true
+            }
+          ]
+        },
+        "redbubble": {
+          "status": "skipped",
+          "reason": "no credentials"
+        },
+        "pinterest": {
+          "status": "skipped",
+          "reason": "no credentials"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-04-28T23:16:12.960177",
+      "trend": "A sarcastic coffee mug character with attitude",
+      "category": "humor",
+      "design_path": "outputs/design_20260428_231520.png",
+      "seo_title": "Sassy Coffee Lover Mug - Funny Morning Attitude",
+      "results": {
+        "printify": {
+          "status": "success",
+          "products": [
+            {
+              "id": "69f13f915e82523502029080",
+              "name": "Unisex Gildan T-Shirt",
+              "title": "Sassy Coffee Lover Mug - Funny Morning Attitude | Unisex Gildan T-Shirt",
+              "status": "created",
+              "published": true
+            },
+            {
+              "id": "69f13f9914a1e925940df807",
+              "name": "Unisex Hoodie",
+              "title": "Sassy Coffee Lover Mug - Funny Morning Attitude | Unisex Hoodie",
+              "status": "created",
+              "published": true
+            },
+            {
+              "id": "69f13f9fcbda58f3e3026c5e",
+              "name": "White Glossy Mug",
+              "title": "Sassy Coffee Lover Mug - Funny Morning Attitude | White Glossy Mug",
+              "status": "created",
+              "published": true
+            }
+          ]
+        },
+        "redbubble": {
+          "status": "skipped",
+          "reason": "no credentials"
+        },
+        "pinterest": {
+          "status": "skipped",
+          "reason": "no credentials"
+        }
+      }
     }
   ],
   "trends_used": [
     "Hilarious Sayings, Clever Sayings, Funny Cricut Projects, Weird Signs, Svg Images, Creative Lettering Quotes, Svg Quotes Funny, Cute Shirt Designs, Sarcastic Quotes Funny",
     "a watercolor painting of mountains, trees and a river in the foreground with wildflowers",
-    "Motivational Quote Sticker - Believe in Yourself | Positive Affirmation | Printable Digital Download"
+    "Motivational Quote Sticker - Believe in Yourself | Positive Affirmation | Printable Digital Download",
+    "A cozy autumn scene with falling leaves and warm colors",
+    "A sarcastic coffee mug character with attitude"
   ],
   "uploaded": {
     "printify": [
@@ -149,6 +237,14 @@
       {
         "date": "2026-04-28",
         "trend": "Motivational Quote Sticker - Believe in Yourself | Positive Affirmation | Printable Digital Download"
+      },
+      {
+        "date": "2026-04-28",
+        "trend": "A cozy autumn scene with falling leaves and warm colors"
+      },
+      {
+        "date": "2026-04-28",
+        "trend": "A sarcastic coffee mug character with attitude"
       }
     ]
   },
