@@ -4,6 +4,6 @@ __pycache__/
 *.pyc
 .vscode/
 
-# Ignore old output images but keep session cookies and the folder
-# Ignore local logs and images - REMOVED to allow bot tracking
-
+# Never commit raw session cookies - use GitHub Secrets instead
+rb_cookies.json
+storefront/public/designs/rb_session.json
